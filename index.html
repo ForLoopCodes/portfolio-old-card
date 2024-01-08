@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForLoop | Product-focused MERN Full Stack Developer.</title>
+    <link
+      rel="icon"
+      href="https://avatars.githubusercontent.com/u/89027512?v=4"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
+      * {
+        font-family: "Inter", sans-serif;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      html,
+      body,
+      .viewport {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        background-color: #000;
+      }
+      .text {
+        width: 510px;
+        height: auto;
+        color: #a3a3a3;
+        word-wrap: break-word;
+        line-height: 1.6;
+        padding: 0;
+        padding-top: 100px;
+        margin: 0;
+      }
+      @media screen and (max-width: 510px) {
+        .text {
+          width: 100%;
+          padding: 100px 20px;
+          padding-bottom: 0;
+        }
+      }
+      .bold {
+        font-weight: 700;
+      }
+      .imp {
+        color: #fff;
+      }
+      .p {
+        margin: 20px 0;
+      }
+      table {
+        width: 100%;
+        height: auto;
+        border-collapse: collapse;
+        margin: 0;
+        margin-top: 10px;
+        padding: 0;
+      }
+      table tr {
+        width: 100%;
+        padding: 0;
+        height: auto;
+      }
+      table tr .left {
+        width: 23%;
+        padding: 0;
+        padding-right: 2%;
+        height: auto;
+        padding-top: 14px;
+        vertical-align: top;
+        color: #7f7f7f;
+      }
+      .light {
+        color: #7f7f7f;
+      }
+      table tr .right {
+        width: 75%;
+        height: auto;
+      }
+      hr {
+        width: 100%;
+        height: 1px;
+        background-color: #464646;
+        border: none;
+        margin-top: -10px;
+        margin: 10px 0;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      svg {
+        width: 14px;
+        height: 14px;
+        margin-left: 4px;
+        margin-bottom: -3px;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 0;
+      }
+      .headings {
+        width: max-content;
+        padding: 2px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text">
+      <div
+        style="
+          display: flex;
+          width: calc(100% - 30px);
+          align-items: center;
+          padding: 15px;
+          padding-bottom: 5px;
+          border-radius: 10px;
+          background-color: #f3c6a14a;
+        "
+      >
+        <img
+          src="https://avatars.githubusercontent.com/u/89027512?v=4"
+          style="margin-right: 20px; width: 70px; height: 70px"
+        />
+        <div>
+          <div
+            class="imp"
+            style="font-size: 16px; font-weight: 500; margin-bottom: 2px"
+          >
+            ForLoop
+          </div>
+          Product-focused MERN Full Stack Developer.
+        </div>
+      </div>
+      <br />
+      <br />
+      <p class="imp headings" style="background: rgba(60, 63, 91, 0.792)">
+        About
+      </p>
+      <hr />
+      Hi! I'm ForLoop, a 17-year-old developer from India. I'm a full-stack
+      developer, and currently working on a few side-projects. I have an
+      expertise is in web development leveraging the power of JavaScript, Svelte and
+      React.js.
+      <br />
+      <br />
+      <p class="imp headings" style="background: rgba(91, 60, 60, 0.82)">
+        Skills
+      </p>
+      <hr />
+      <font style="color: #ddd;">HTML . CSS . JavaScript . JQuery . Node.js . Svelte . Tailwind . React.js . JSX . Express.js .
+      MongoDB Atlas</font> . OpenAI GPT - JS . Git . Adobe XD . Canva .
+      Discord.js . RMSkins . Stockfish . Basics of Python, Kotlin & Java.
+      <br />
+      <br />
+      <p class="imp headings" style="background: rgba(63, 91, 60, 0.733)">
+        Work experience
+      </p>
+      <a href="#projects"> Click to skip this part. </a>
+      <hr />
+      I have been working on web development for the past 5 years, and have
+      worked on a few projects and chat-bots.
+      <br />
+      <table>
+        <tr>
+          <td class="left">2023 - 2024</td>
+          <td class="right">
+            <p class="imp">
+              <a target="_blank" href="https://cherrybot.xyz">
+                <img
+                        src="https://camo.githubusercontent.com/63fbf8873ef466b07ad951515c6eb09490011dd1a94d2dab0bbaa890bea93d5a/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6170702d69636f6e732f3737353630343832363434383539323932372f61626635313932656334666231336165383239383638323064343733316134322e776562703f73697a653d313238"
+                />
+                <br />
+                Site Developer at Ch$rry Network.
+                <svg viewBox="0 0 14 14">
+                  <path
+                          d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                          fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            Crafted a website for Ch$rry Network, a Discord bot company, emphasizing their outstanding services and user-friendly bots.
+            <p class="light">Svelte . Tailwind . JS . AOS</p>
+            <hr />
+            <p class="imp">
+              <a
+                target="_blank"
+                href="https://github.com/ForLoopCodes/ChessGPT-API"
+              >
+                AI Chess - ChessGPT
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            ChessGPT used an AI-based chess API to play chess against user,
+            Rather it be any environment - Terminal, Discord or Application, it
+            works!
+            <p class="light">
+              Python . JavaScript . Discord.js . Node.js . Express.js
+            </p>
+            <hr />
+            <p class="imp">Added more skills to the inventory.</p>
+            Learnt future-proof JS frameworks like Svelte, and Tailwind.
+            Basics of Python, Kotlin and Java. Made games like
+            Chess with integration of ChessGPT.
+            <p class="light">Svelte . Tailwind . Python . Kotlin . Java</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">2022 - 2023</td>
+          <td class="right">
+            <p class="imp">
+              <a
+                      target="_blank"
+                      href="https://www.github.com/forloopcodes/water"
+              >
+                <img
+                        src="https://raw.githubusercontent.com/ForLoopCodes/water/master/public/images/Water-logo.png"
+                />
+                <br />
+                Water
+                <svg viewBox="0 0 14 14">
+                  <path
+                          d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                          fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            Water is a note-making application created with react.js and based
+            on markdown, minimal, easy to use, simple, fast, eye-catching UI,
+            which is fully customizable.
+            <p class="light">React-JSX . JavaScript . Node.js . ReactMarkdown . Upcoming: GPT . Express.js . MongoDB</p>
+            <hr />
+            <p class="imp">
+              <a target="_blank" href="https://github.com/Blossoms-Studios">
+                <img
+                        src="https://avatars.githubusercontent.com/u/120766414?s=200&v=4"
+                />
+                <br />
+                Site Developer at Blossoms Studios
+                <svg viewBox="0 0 14 14">
+                  <path
+                          d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                          fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            Blossoms Studios is a community of developers, designing a minecraft
+            server, and mods.
+            <p class="light">React . JavaScript . Node.js</p>
+            <hr />
+            <p class="imp">Learning more of JavaScript.</p>
+            Finished mastering the JavaScript, Achievement unlocked: MERN Full
+            Stack Developer tag.
+            <p class="light">React.js . JSX . Express.js . MongoDB Atlas</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">2018 - 2022</td>
+          <td class="right">
+            <p class="imp">Learning the perfect way to code.</p>
+            In this time I have learned a lot of things, and I have also created
+            a few projects. Learnt many languages, frameworks, and libraries.
+            <p class="light"
+               id="projects">
+              HTML . CSS . JavaScript . JQuery . Node.js . Git . Adobe XD
+              . Canva . Discord.js . RMSkins
+            </p>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <p
+        class="imp headings"
+        style="background: rgba(60, 87, 91, 0.764)"
+      >
+        Side projects
+      </p>
+      <hr />
+      <p>List of side projects I have worked on.</p>
+      <table>
+        <tr>
+          <td class="left">Ongoing</td>
+          <td class="right">
+            <p class="imp">
+              <a
+                target="_blank"
+                href="https://www.github.com/forloopcodes/water"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/ForLoopCodes/water/master/public/images/Water-logo.png"
+                />
+                <br />
+                Water
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            Water is a note-making application created with react.js and based
+            on markdown, minimal, easy to use, simple, fast, eye-catching UI,
+            which is fully customizable.
+            <p class="light">
+              React-JSX . JavaScript . Node.js . ReactMarkdown . Upcoming: GPT . Express.js . MongoDB
+            </p>
+            <hr />
+            <p class="imp">
+              <a
+                target="_blank"
+                href="https://github.com/ForLoopCodes/ChessGPT-API"
+              >
+                ChessGPT
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            ChessGPT used an AI-based chess API to play chess against user,
+            Rather it be any environment - Terminal, Discord or Application, it
+            works!
+            <p class="light">
+              Python . JavaScript . Discord.js . Node.js . Express.js
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">2022</td>
+          <td class="right">
+            <p class="imp">
+              <a
+                target="_blank"
+                href="https://www.github.com/forloopcodes/ketchup"
+              >
+                Ketchup
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            Future everyday-stress manager! Timer, todo, tally-counter, mood
+            tracker, clock, password manager, expenses tracker, YouTube, in-app
+            fun, and much more! (didn't work out as expected)
+            <p class="light">React-JSX . JavaScript . Node.js</p>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <p class="imp headings" style="background: rgba(91, 60, 90, 0.735)">
+        Links
+      </p>
+      <hr />
+      <p>Links to my social media accounts.</p>
+      <table>
+        <tr>
+          <td class="left">GitHub</td>
+          <td class="right">
+            <p class="imp">
+              <a target="_blank" href="https://www.github.com/forloopcodes">
+                ForLoopCodes
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">X / Twitter</td>
+          <td class="right">
+            <p class="imp">
+              <a target="_blank" href="https://twitter.com/forloopcodes">
+                @forloopcodes
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">Mail</td>
+          <td class="right">
+            <p class="imp">
+              <a target="_blank" href="mailto:meetnp1706@gmail.com">
+                meetnp1706@gmail.com
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">Discord</td>
+          <td class="right">
+            <p class="imp" style="margin-bottom: -10px">
+              <a
+                target="_blank"
+                href="https://discord.com/users/967762715441504296"
+              >
+                @forloop
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+            <p class="imp">
+              <a
+                target="_blank"
+                href="https://discord.com/users/1014357327668850788"
+              >
+                @forloopcodes
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">YouTube</td>
+          <td class="right">
+            <p class="imp">
+              <a target="_blank" href="https://youtube.com/@ForLoopCodes">
+                @ForLoopCodes
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="left">Buy Me A Coffee</td>
+          <td class="right">
+            <p class="imp">
+              <a
+                target="_blank"
+                href="https://www.buymeacoffee.com/forloopcoffee"
+              >
+                ForLoopCoffee
+                <svg viewBox="0 0 14 14">
+                  <path
+                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
+                    fill="white"
+                  />
+                </svg>
+              </a>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <br />
+    </div>
+  </body>
+</html>
