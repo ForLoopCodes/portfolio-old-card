@@ -1,506 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ForLoop | Product-focused MERN Full Stack Developer.</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" href="resources/forloopico.jpg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="icon"
-      href="https://avatars.githubusercontent.com/u/89027512?v=4"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <title>@ForLoop - The last web dev on earth.</title>
+    <meta
+      name="description"
+      content="ForLoop is a web developer that specializes in creating websites and web applications."
     />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap");
       * {
-        font-family: "Inter", sans-serif;
+        transition: 1s;
+        font-family: poppins;
         user-select: none;
         -webkit-user-select: none;
       }
       html,
       body,
       .viewport {
+        height: 100%;
         width: 100%;
         margin: 0;
-        padding: 0;
+        overflow: hidden;
         display: flex;
         justify-content: center;
-        background-color: #000;
+        align-items: center;
+        perspective: 750px;
+        background: url(resources/bg.jpg) no-repeat 50%;
+        background-size: cover;
+        animation: body-bg 2s infinite ease-in-out;
       }
-      .text {
-        width: 510px;
-        height: auto;
-        color: #a3a3a3;
-        word-wrap: break-word;
-        line-height: 1.6;
-        padding: 0;
-        padding-top: 100px;
-        margin: 0;
-      }
-      @media screen and (max-width: 510px) {
-        .text {
-          width: 100%;
-          padding: 100px 20px;
-          padding-bottom: 0;
+      @keyframes body-bg {
+        0% {
+          background-position: 50% 50%;
+        }
+        33% {
+          background-position: 52.5% 47.5%;
+        }
+        66% {
+          background-position: 47.5% 52.5%;
+        }
+        100% {
+          background-position: 50% 50%;
         }
       }
-      .bold {
-        font-weight: 700;
-      }
-      .imp {
-        color: #fff;
-      }
-      .p {
-        margin: 20px 0;
-      }
-      table {
+      .bg-cover {
+        height: 100%;
         width: 100%;
-        height: auto;
-        border-collapse: collapse;
-        margin: 0;
-        margin-top: 10px;
-        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        backdrop-filter: blur(5px);
       }
-      table tr {
+      .card-shadow {
+        position: absolute;
+        width: 250px;
+        height: 300px;
+        z-index: 1;
+        background: url(resources/card-bg.png) no-repeat center center;
+        background-size: cover;
+        border-radius: 25px;
+        filter: blur(50px) brightness(1.3);
+        animation-name: card-shadow-anim;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      @keyframes card-shadow-anim {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(0.8);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .card-holder {
+        width: 250px;
+        height: 300px;
+        z-index: 2;
+        background-color: #fff;
+        filter: drop-shadow(-20px 20px 40px #398cc000);
+        border-radius: 25px;
+      }
+      .card-bg {
         width: 100%;
-        padding: 0;
-        height: auto;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        filter: brightness(1.3);
+        background: url(resources/card-bg.png) no-repeat center center;
+        background-size: cover;
+        border-radius: 25px;
       }
-      table tr .left {
-        width: 23%;
-        padding: 0;
-        padding-right: 2%;
-        height: auto;
-        padding-top: 14px;
-        vertical-align: top;
-        color: #7f7f7f;
+      .mini-card {
+        width: 180px;
+        height: 230px;
+        padding: 20px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        border-radius: 25px;
+        z-index: 2;
+        background-color: #ffffffcc;
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
       }
-      .light {
-        color: #7f7f7f;
-      }
-      table tr .right {
-        width: 75%;
-        height: auto;
-      }
-      hr {
-        width: 100%;
-        height: 1px;
-        background-color: #464646;
-        border: none;
-        margin-top: -10px;
-        margin: 10px 0;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      svg {
-        width: 14px;
-        height: 14px;
-        margin-left: 4px;
-        margin-bottom: -3px;
-      }
-      img {
-        width: 50px;
-        height: 50px;
+      .profile-circle {
+        height: 125px;
+        width: 125px;
         border-radius: 50%;
-        margin: 0;
-        margin-bottom: 10px;
-        padding: 0;
+        margin-top: 10px;
+        background: url(resources/forloop.jpg) no-repeat center center;
+        background-size: cover;
       }
-      .headings {
-        width: max-content;
-        padding: 2px 10px;
-        border-radius: 5px;
-        font-weight: 500;
+      .user-name {
+        font-size: 25px;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #000;
+      }
+      .user-def {
+        font-size: 15px;
+        margin-top: 7.5px;
+        line-height: 1.25;
+        font-weight: 600;
+        text-align: center;
+        color: #000;
+      }
+      .card-shadow-ch {
+        background: transparent !important;
+        filter: none !important;
+        animation-name: none !important;
+      }
+      .card-holder-ch {
+        background: transparent !important;
+        transform: rotateY(180deg) !important;
+        backface-visibility: hidden !important;
+      }
+      .card-holder-ch .card-bg {
+        filter: none !important;
+      }
+      .card-holder-ch .mini-card {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .anim-theme {
+        background: linear-gradient(135deg, #000836 20%, #380101 100%);
+        height: 120vh;
+        width: 120vw;
+        border-radius: 50vw;
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0) rotate(90deg);
+        background-color: #193c6d;
+        text-align: center;
+        margin: 0px;
+        overflow: hidden;
+      }
+      .anim-theme-ch {
+        height: 120vh;
+        width: 120vw;
+        transform: translate(-50%, -50%) scale(1) rotate(360deg) !important;
+        border-radius: 0;
+      }
+      .card-holder.back {
+        width: 250px;
+        height: 300px;
+        z-index: 2;
+        background: #000 !important;
+        backface-visibility: hidden !important;
+        filter: drop-shadow(-20px 20px 40px #398cc000);
+        transform: rotateY(-180deg);
+        border-radius: 25px;
+        border: 2px solid #fff;
+        position: absolute;
+      }
+      .card-holder-ch.back {
+        transform: rotateY(0deg) !important;
+      }
+      .card-holder:hover {
+        transform: scale(1.05);
+        animation: bounce 1.5s ease 1s infinite;
+      }
+      @keyframes bounce {
+        0% {
+          transform: scale(1.05);
+        }
+        33% {
+          transform: scale(1.075) rotateZ(1deg) rotateY(-1deg);
+        }
+        66% {
+          transform: scale(1.075) rotateZ(-1deg) rotateY(1deg);
+        }
+        100% {
+          transform: scale(1.05);
+        }
+      }
+      .card-holder.back:hover {
+        animation: none !important;
+        transform: scale(1.02) !important;
+      }
+      .hidden-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 60px);
+        height: calc(100% - 60px);
+        padding: 5px;
+        padding-top: 30px;
+        color: white;
+        transition: 0s ease;
+        font-size: 12px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-between;
+        margin-left: 20px;
+        z-index: 3;
+      }
+      .hidden-text .list {
+        display: flex;
+        width: 200px;
+        align-items: center;
+        align-content: center;
+        justify-content: flex-start;
+      }
+      .hidden-text .center {
+        display: flex;
+        width: 200px;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+      }
+      .hidden-text .list a {
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+        position: relative;
+      }
+      .hidden-text .list .sup-anim:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0 !important;
+        left: 0;
+        background-color: #0087ca;
+        border-radius: 50vw;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .hidden-text .list .sup-anim:before {
+        width: 0 !important;
+        background-color: #0087ca00 !important;
+      }
+      .hidden-text .list a:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        border-radius: 50vw;
+        height: 2px;
+        bottom: -15px;
+        left: 0;
+        background-color: #0087ca;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .hidden-text .list a:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      .hidden-text .list a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-radius: 50vw;
+        transform: scaleX(0);
+        height: 2px;
+        top: -5px;
+        left: 0;
+        background-color: #0087ca;
+        transform-origin: bottom left;
+        transition: transform 0.25s ease-out;
+      }
+      .hidden-text .list a:hover:before {
+        transform: scaleX(1);
+        transform-origin: bottom right;
+      }
+      .hidden-text .list .svg-cont {
+        margin-right: 10px;
+        width: 20px !important;
+        height: 20px !important;
+      }
+      .hidden-text .list svg {
+        width: 20px !important;
+        height: 20px !important;
+      }
+      .hidden-text .list img {
+        height: 25px;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-bottom: 7.5px;
+      }
+      .hidden-text .center svg {
+        height: 40px;
+        margin-bottom: -10px;
+        margin-right: 7.5px;
+        margin-left: 7.5px;
+      }
+      .hover {
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        border-radius: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        pointer-events: visible;
+        opacity: 0;
+        transition: 0.5s ease !important;
+      }
+      .hover:hover {
+        cursor: pointer;
+        opacity: 1;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.3);
+      }
+      .hover svg {
+        height: 30px;
+        transform: rotateY(180deg);
+        margin: 20px;
+      }
+      .indi {
+        font-weight: 600;
+        font-size: 17.5px;
+        color: #000;
+        text-align: center;
+      }
+      iframe {
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        pointer-events: none;
+      }
+      @media only screen and (max-width: 1000px) {
+        .card-holder {
+          transform: scale(2);
+        }
+        .card-holder-ch.back {
+          transform: rotateY(0deg) scale(2) !important;
+        }
+        .card-shadow {
+          transform: scale(2);
+        }
       }
     </style>
   </head>
   <body>
-    <div class="text">
-      <div
-        style="
-          display: flex;
-          width: calc(100% - 30px);
-          align-items: center;
-          padding: 15px;
-          padding-bottom: 5px;
-          border-radius: 10px;
-          background-color: #f3c6a14a;
-        "
-      >
-        <img
-          src="https://avatars.githubusercontent.com/u/89027512?v=4"
-          style="margin-right: 20px; width: 70px; height: 70px"
-        />
-        <div>
-          <div
-            class="imp"
-            style="font-size: 16px; font-weight: 500; margin-bottom: 2px"
-          >
-            ForLoop
-          </div>
-          Product-focused MERN Full Stack Developer.
+    <div class="anim-theme" onclick="rblur()">
+      <iframe src="resources/darkbg.html"></iframe>
+    </div>
+    <div class="card-holder" onclick="rfocus()">
+      <div class="card-shadow"></div>
+      <div class="card-bg"></div>
+      <div class="hover">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svgjs="http://svgjs.com/svgjs"
+          width="128"
+          height="128"
+          x="0"
+          y="0"
+          viewBox="0 0 24 24"
+          style="enable-background: new 0 0 512 512"
+          xml:space="preserve"
+        >
+          <g>
+            <path
+              xmlns="http://www.w3.org/2000/svg"
+              d="M21,10.003c-.209-8.623-12.438-9.493-13.911-1.062l-3.086,1.122C3.959,4.53,8.469,0,14,.003c13.287,.506,13.223,19.582-.061,19.997l1.122-3.086c3.357-.514,5.939-3.413,5.939-6.911Zm-6.69-.309c1.183,1.183,1.735,2.776,1.585,4.378,1.535-.716,2.606-2.263,2.606-4.069,.019-4.795-6.642-6.192-8.577-1.88,1.615-.205,3.227,.42,4.386,1.572ZM.442,21.439l2.645-2.645-1.666-1.666c-.642-.642-.907-1.553-.711-2.439,.197-.886,.823-1.6,1.676-1.91l6.838-2.486c1.294-.47,2.699-.156,3.672,.815,.972,.972,1.284,2.379,.814,3.671l-2.486,6.838c-.31,.853-1.024,1.479-1.91,1.676-.873,.196-1.798-.066-2.439-.711l-1.666-1.666-2.645,2.645c-1.393,1.381-3.502-.729-2.121-2.121Zm8.154-1.377l2.293-6.309c.095-.261-.031-.44-.116-.524-.083-.085-.262-.215-.524-.116l-6.309,2.293,4.656,4.656Z"
+              fill="#000000"
+              data-original="#000000"
+            ></path>
+          </g>
+        </svg>
+        <div class="indi">
+          Don't you dare <br />
+          click here!
         </div>
       </div>
-      <br />
-      <br />
-      <p class="imp headings" style="background: rgba(60, 63, 91, 0.792)">
-        About
-      </p>
-      <hr />
-      Hi! I'm ForLoop, a 17-year-old developer from India. I'm a full-stack
-      developer, and currently working on a few side-projects. I have an
-      expertise is in web development leveraging the power of JavaScript, Svelte and
-      React.js.
-      <br />
-      <br />
-      <p class="imp headings" style="background: rgba(91, 60, 60, 0.82)">
-        Skills
-      </p>
-      <hr />
-      <font style="color: #ddd;">HTML . CSS . JavaScript . JQuery . Node.js . Svelte . Tailwind . React.js . JSX . Express.js .
-      MongoDB Atlas</font> . OpenAI GPT - JS . Git . Adobe XD . Canva .
-      Discord.js . RMSkins . Stockfish . Basics of Python, Kotlin & Java.
-      <br />
-      <br />
-      <p class="imp headings" style="background: rgba(63, 91, 60, 0.733)">
-        Work experience
-      </p>
-      <a href="#projects"> Click to skip this part. </a>
-      <hr />
-      I have been working on web development for the past 5 years, and have
-      worked on a few projects and chat-bots.
-      <br />
-      <table>
-        <tr>
-          <td class="left">2023 - 2024</td>
-          <td class="right">
-            <p class="imp">
-              <a target="_blank" href="https://cherrybot.xyz">
-                <img
-                        src="https://camo.githubusercontent.com/63fbf8873ef466b07ad951515c6eb09490011dd1a94d2dab0bbaa890bea93d5a/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6170702d69636f6e732f3737353630343832363434383539323932372f61626635313932656334666231336165383239383638323064343733316134322e776562703f73697a653d313238"
-                />
-                <br />
-                Site Developer at Ch$rry Network.
-                <svg viewBox="0 0 14 14">
-                  <path
-                          d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                          fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            Crafted a website for Ch$rry Network, a Discord bot company, emphasizing their outstanding services and user-friendly bots.
-            <p class="light">Svelte . Tailwind . JS . AOS</p>
-            <hr />
-            <p class="imp">
-              <a
-                target="_blank"
-                href="https://github.com/ForLoopCodes/ChessGPT-API"
-              >
-                AI Chess - ChessGPT
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            ChessGPT used an AI-based chess API to play chess against user,
-            Rather it be any environment - Terminal, Discord or Application, it
-            works!
-            <p class="light">
-              Python . JavaScript . Discord.js . Node.js . Express.js
-            </p>
-            <hr />
-            <p class="imp">Added more skills to the inventory.</p>
-            Learnt future-proof JS frameworks like Svelte, and Tailwind.
-            Basics of Python, Kotlin and Java. Made games like
-            Chess with integration of ChessGPT.
-            <p class="light">Svelte . Tailwind . Python . Kotlin . Java</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">2022 - 2023</td>
-          <td class="right">
-            <p class="imp">
-              <a
-                      target="_blank"
-                      href="https://www.github.com/forloopcodes/water"
-              >
-                <img
-                        src="https://raw.githubusercontent.com/ForLoopCodes/water/master/public/images/Water-logo.png"
-                />
-                <br />
-                Water
-                <svg viewBox="0 0 14 14">
-                  <path
-                          d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                          fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            Water is a note-making application created with react.js and based
-            on markdown, minimal, easy to use, simple, fast, eye-catching UI,
-            which is fully customizable.
-            <p class="light">React-JSX . JavaScript . Node.js . ReactMarkdown . Upcoming: GPT . Express.js . MongoDB</p>
-            <hr />
-            <p class="imp">
-              <a target="_blank" href="https://github.com/Blossoms-Studios">
-                <img
-                        src="https://avatars.githubusercontent.com/u/120766414?s=200&v=4"
-                />
-                <br />
-                Site Developer at Blossoms Studios
-                <svg viewBox="0 0 14 14">
-                  <path
-                          d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                          fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            Blossoms Studios is a community of developers, designing a minecraft
-            server, and mods.
-            <p class="light">React . JavaScript . Node.js</p>
-            <hr />
-            <p class="imp">Learning more of JavaScript.</p>
-            Finished mastering the JavaScript, Achievement unlocked: MERN Full
-            Stack Developer tag.
-            <p class="light">React.js . JSX . Express.js . MongoDB Atlas</p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">2018 - 2022</td>
-          <td class="right">
-            <p class="imp">Learning the perfect way to code.</p>
-            In this time I have learned a lot of things, and I have also created
-            a few projects. Learnt many languages, frameworks, and libraries.
-            <p class="light"
-               id="projects">
-              HTML . CSS . JavaScript . JQuery . Node.js . Git . Adobe XD
-              . Canva . Discord.js . RMSkins
-            </p>
-          </td>
-        </tr>
-      </table>
-      <br />
-      <br />
-      <p
-        class="imp headings"
-        style="background: rgba(60, 87, 91, 0.764)"
-      >
-        Side projects
-      </p>
-      <hr />
-      <p>List of side projects I have worked on.</p>
-      <table>
-        <tr>
-          <td class="left">Ongoing</td>
-          <td class="right">
-            <p class="imp">
-              <a
-                target="_blank"
-                href="https://www.github.com/forloopcodes/water"
-              >
-                <img
-                  src="https://raw.githubusercontent.com/ForLoopCodes/water/master/public/images/Water-logo.png"
-                />
-                <br />
-                Water
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            Water is a note-making application created with react.js and based
-            on markdown, minimal, easy to use, simple, fast, eye-catching UI,
-            which is fully customizable.
-            <p class="light">
-              React-JSX . JavaScript . Node.js . ReactMarkdown . Upcoming: GPT . Express.js . MongoDB
-            </p>
-            <hr />
-            <p class="imp">
-              <a
-                target="_blank"
-                href="https://github.com/ForLoopCodes/ChessGPT-API"
-              >
-                ChessGPT
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            ChessGPT used an AI-based chess API to play chess against user,
-            Rather it be any environment - Terminal, Discord or Application, it
-            works!
-            <p class="light">
-              Python . JavaScript . Discord.js . Node.js . Express.js
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">2022</td>
-          <td class="right">
-            <p class="imp">
-              <a
-                target="_blank"
-                href="https://www.github.com/forloopcodes/ketchup"
-              >
-                Ketchup
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            Future everyday-stress manager! Timer, todo, tally-counter, mood
-            tracker, clock, password manager, expenses tracker, YouTube, in-app
-            fun, and much more! (didn't work out as expected)
-            <p class="light">React-JSX . JavaScript . Node.js</p>
-          </td>
-        </tr>
-      </table>
-      <br />
-      <br />
-      <p class="imp headings" style="background: rgba(91, 60, 90, 0.735)">
-        Links
-      </p>
-      <hr />
-      <p>Links to my social media accounts.</p>
-      <table>
-        <tr>
-          <td class="left">GitHub</td>
-          <td class="right">
-            <p class="imp">
-              <a target="_blank" href="https://www.github.com/forloopcodes">
-                ForLoopCodes
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">X / Twitter</td>
-          <td class="right">
-            <p class="imp">
-              <a target="_blank" href="https://twitter.com/forloopcodes">
-                @forloopcodes
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">Mail</td>
-          <td class="right">
-            <p class="imp">
-              <a target="_blank" href="mailto:meetnp1706@gmail.com">
-                meetnp1706@gmail.com
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">Discord</td>
-          <td class="right">
-            <p class="imp" style="margin-bottom: -10px">
-              <a
-                target="_blank"
-                href="https://discord.com/users/967762715441504296"
-              >
-                @forloop
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-            <p class="imp">
-              <a
-                target="_blank"
-                href="https://discord.com/users/1014357327668850788"
-              >
-                @forloopcodes
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">YouTube</td>
-          <td class="right">
-            <p class="imp">
-              <a target="_blank" href="https://youtube.com/@ForLoopCodes">
-                @ForLoopCodes
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td class="left">Buy Me A Coffee</td>
-          <td class="right">
-            <p class="imp">
-              <a
-                target="_blank"
-                href="https://www.buymeacoffee.com/forloopcoffee"
-              >
-                ForLoopCoffee
-                <svg viewBox="0 0 14 14">
-                  <path
-                    d="M10.9639 8.92676L10.957 3.59473C10.957 3.42155 10.9023 3.28027 10.793 3.1709C10.6882 3.05697 10.5446 3 10.3623 3H5.03027C4.8571 3 4.7181 3.05697 4.61328 3.1709C4.50846 3.28027 4.45605 3.41016 4.45605 3.56055C4.45605 3.70638 4.51074 3.83398 4.62012 3.94336C4.73405 4.05273 4.86393 4.10742 5.00977 4.10742H6.58887L9.2959 4.01172L8.26367 4.89355L3.1709 10C3.05697 10.1094 3 10.237 3 10.3828C3 10.5332 3.05697 10.6676 3.1709 10.7861C3.28939 10.9046 3.42383 10.9639 3.57422 10.9639C3.72461 10.9639 3.85449 10.9092 3.96387 10.7998L9.06348 5.69336L9.95898 4.66113L9.84277 7.34766V8.9541C9.84277 9.09994 9.89746 9.22982 10.0068 9.34375C10.1208 9.45768 10.2529 9.51465 10.4033 9.51465C10.5492 9.51465 10.679 9.45996 10.793 9.35059C10.9069 9.23665 10.9639 9.09538 10.9639 8.92676Z"
-                    fill="white"
-                  />
-                </svg>
-              </a>
-            </p>
-          </td>
-        </tr>
-      </table>
-      <br />
-      <br />
+      <div class="mini-card">
+        <div class="profile-circle"></div>
+        <div class="user-name">@ForLoop.</div>
+        <div class="user-def">#Front-end website developer.</div>
+      </div>
     </div>
+    <div class="card-holder back">
+      <div class="hidden-text">
+        <div class="list center">
+          <img src="/resources/html.png" alt="HTML" title="HTML" />
+          <img src="resources/css.png" alt="CSS" title="CSS" />
+          <img src="resources/js.png" alt="JS" title="JS" />
+          <img src="resources/jq.svg" alt="JQuery" title="JQuery" />
+          <img src="resources/react.png" alt="React" title="React" />
+          <img src="resources/java.png" alt="Java" title="Java" />
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M12,0A10.513,10.513,0,0,0,1.5,10.5c0,2.826,2.2,6.766,6.541,11.709a5.275,5.275,0,0,0,7.92,0C20.3,17.267,22.5,13.327,22.5,10.5A10.513,10.513,0,0,0,12,0Zm1.706,20.231a2.33,2.33,0,0,1-3.412,0c-3.683-4.195-5.8-7.742-5.8-9.73a7.5,7.5,0,0,1,15,0C19.5,12.489,17.389,16.036,13.706,20.231Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M12,6.055a4.363,4.363,0,1,0,4.363,4.363A4.368,4.368,0,0,0,12,6.055Zm0,5.726a1.363,1.363,0,1,1,1.363-1.363A1.364,1.364,0,0,1,12,11.781Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          Gujarat, India.
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M15.938,8.288c.298,1.696-.509,3.391-2.008,4.217,0,0-.415,.218-.466,.245-.157,.677-.757,1.251-1.463,1.251-.811-.023-1.5-.688-1.5-1.5,0-1.585,1.13-2.176,1.737-2.493l.243-.129c.291-.16,.596-.537,.502-1.071-.067-.383-.406-.722-.789-.789-.613-.11-1.129,.316-1.224,.781-.165,.811-.957,1.33-1.769,1.171-.812-.165-1.336-.957-1.171-1.769,.429-2.11,2.531-3.518,4.683-3.139,1.615,.283,2.941,1.61,3.225,3.225Zm-3.938,7.712c-.828,0-1.5,.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5ZM24,5.5v13c0,3.032-2.467,5.5-5.5,5.5H5.5c-3.033,0-5.5-2.468-5.5-5.5V5.5C0,2.467,2.467,0,5.5,0h13c3.033,0,5.5,2.467,5.5,5.5Zm-3,0c0-1.378-1.122-2.5-2.5-2.5H5.5c-1.378,0-2.5,1.122-2.5,2.5v13c0,1.379,1.122,2.5,2.5,2.5h13c1.378,0,2.5-1.121,2.5-2.5V5.5Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          17 year-old organism <br />with passion for web development.
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M24,12.5v6A5.506,5.506,0,0,1,18.5,24H5.5A5.506,5.506,0,0,1,0,18.5V8.5A5.506,5.506,0,0,1,5.5,3h4a1.5,1.5,0,0,1,0,3h-4A2.493,2.493,0,0,0,3.3,7.336l6.931,6.932a2.562,2.562,0,0,0,3.536,0l1.224-1.3a1.5,1.5,0,1,1,2.182,2.06l-1.255,1.328a5.521,5.521,0,0,1-7.808.032L3,11.278V18.5A2.5,2.5,0,0,0,5.5,21h13A2.5,2.5,0,0,0,21,18.5v-6A1.5,1.5,0,0,1,24,12.5ZM14.5,7H17V9.5a1.5,1.5,0,0,0,3,0V7h2.5a1.5,1.5,0,0,0,0-3H20V1.5a1.5,1.5,0,0,0-3,0V4H14.5A1.5,1.5,0,0,0,14.5,7Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <a
+            class="sup-anim"
+            target="_blank"
+            href="mailto:meetnp1706@gmail.com"
+          >
+            meetnp1706@gmail.com
+          </a>
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M20.1,20.182a1.5,1.5,0,0,1-1.156-2.455,9.05,9.05,0,0,0,0-11.454,1.5,1.5,0,0,1,2.313-1.91,12.065,12.065,0,0,1,0,15.274A1.5,1.5,0,0,1,20.1,20.182ZM4.855,19.838a1.5,1.5,0,0,0,.2-2.111,9.049,9.049,0,0,1,0-11.454,1.5,1.5,0,0,0-2.313-1.91,12.065,12.065,0,0,0,0,15.274,1.5,1.5,0,0,0,2.111.2ZM19,12c-.3,9.251-13.707,9.249-14,0C5.294,2.749,18.707,2.751,19,12Zm-5.5,3.5a1.5,1.5,0,0,0-3,0A1.5,1.5,0,0,0,13.5,15.5Zm0-7a1.5,1.5,0,0,0-3,0v3a1.5,1.5,0,0,0,3,0Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          Not Available for hire.
+        </div>
+        <div class="list center">
+          <a
+            href="https://www.GitHub.com/ForLoopGH"
+            target="_blank"
+            title="GitHub"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <g xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    style="fill-rule: evenodd; clip-rule: evenodd"
+                    d="M12,0.296c-6.627,0-12,5.372-12,12c0,5.302,3.438,9.8,8.206,11.387   c0.6,0.111,0.82-0.26,0.82-0.577c0-0.286-0.011-1.231-0.016-2.234c-3.338,0.726-4.043-1.416-4.043-1.416   C4.421,18.069,3.635,17.7,3.635,17.7c-1.089-0.745,0.082-0.729,0.082-0.729c1.205,0.085,1.839,1.237,1.839,1.237   c1.07,1.834,2.807,1.304,3.492,0.997C9.156,18.429,9.467,17.9,9.81,17.6c-2.665-0.303-5.467-1.332-5.467-5.93   c0-1.31,0.469-2.381,1.237-3.221C5.455,8.146,5.044,6.926,5.696,5.273c0,0,1.008-0.322,3.301,1.23   C9.954,6.237,10.98,6.104,12,6.099c1.02,0.005,2.047,0.138,3.006,0.404c2.29-1.553,3.297-1.23,3.297-1.23   c0.653,1.653,0.242,2.873,0.118,3.176c0.769,0.84,1.235,1.911,1.235,3.221c0,4.609-2.807,5.624-5.479,5.921   c0.43,0.372,0.814,1.103,0.814,2.222c0,1.606-0.014,2.898-0.014,3.293c0,0.319,0.216,0.694,0.824,0.576   c4.766-1.589,8.2-6.085,8.2-11.385C24,5.669,18.627,0.296,12,0.296z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                  <path
+                    d="M4.545,17.526c-0.026,0.06-0.12,0.078-0.206,0.037c-0.087-0.039-0.136-0.121-0.108-0.18   c0.026-0.061,0.12-0.078,0.207-0.037C4.525,17.384,4.575,17.466,4.545,17.526L4.545,17.526z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                  <path
+                    d="M5.031,18.068c-0.057,0.053-0.169,0.028-0.245-0.055c-0.079-0.084-0.093-0.196-0.035-0.249   c0.059-0.053,0.167-0.028,0.246,0.056C5.076,17.903,5.091,18.014,5.031,18.068L5.031,18.068z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                  <path
+                    d="M5.504,18.759c-0.074,0.051-0.194,0.003-0.268-0.103c-0.074-0.107-0.074-0.235,0.002-0.286   c0.074-0.051,0.193-0.005,0.268,0.101C5.579,18.579,5.579,18.707,5.504,18.759L5.504,18.759z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                  <path
+                    d="M6.152,19.427c-0.066,0.073-0.206,0.053-0.308-0.046c-0.105-0.097-0.134-0.234-0.068-0.307   c0.067-0.073,0.208-0.052,0.311,0.046C6.191,19.217,6.222,19.355,6.152,19.427L6.152,19.427z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                  <path
+                    d="M7.047,19.814c-0.029,0.094-0.164,0.137-0.3,0.097C6.611,19.87,6.522,19.76,6.55,19.665   c0.028-0.095,0.164-0.139,0.301-0.096C6.986,19.609,7.075,19.719,7.047,19.814L7.047,19.814z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                  <path
+                    d="M8.029,19.886c0.003,0.099-0.112,0.181-0.255,0.183c-0.143,0.003-0.26-0.077-0.261-0.174c0-0.1,0.113-0.181,0.256-0.184   C7.912,19.708,8.029,19.788,8.029,19.886L8.029,19.886z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                  <path
+                    d="M8.943,19.731c0.017,0.096-0.082,0.196-0.224,0.222c-0.139,0.026-0.268-0.034-0.286-0.13   c-0.017-0.099,0.084-0.198,0.223-0.224C8.797,19.574,8.925,19.632,8.943,19.731L8.943,19.731z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a
+            href="https://discord.gg/VFP4K7FQ8n"
+            target="_blank"
+            title="Discord Server"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <g xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M20.317,4.37c-1.53-0.702-3.17-1.219-4.885-1.515c-0.031-0.006-0.062,0.009-0.079,0.037   c-0.211,0.375-0.445,0.865-0.608,1.249c-1.845-0.276-3.68-0.276-5.487,0C9.095,3.748,8.852,3.267,8.641,2.892   C8.624,2.864,8.593,2.85,8.562,2.855C6.848,3.15,5.208,3.667,3.677,4.37C3.664,4.375,3.652,4.385,3.645,4.397   c-3.111,4.648-3.964,9.182-3.546,13.66c0.002,0.022,0.014,0.043,0.031,0.056c2.053,1.508,4.041,2.423,5.993,3.029   c0.031,0.01,0.064-0.002,0.084-0.028c0.462-0.63,0.873-1.295,1.226-1.994c0.021-0.041,0.001-0.09-0.042-0.106   c-0.653-0.248-1.274-0.55-1.872-0.892c-0.047-0.028-0.051-0.095-0.008-0.128c0.126-0.094,0.252-0.192,0.372-0.291   c0.022-0.018,0.052-0.022,0.078-0.01c3.928,1.793,8.18,1.793,12.061,0c0.026-0.012,0.056-0.009,0.079,0.01   c0.12,0.099,0.246,0.198,0.373,0.292c0.044,0.032,0.041,0.1-0.007,0.128c-0.598,0.349-1.219,0.645-1.873,0.891   c-0.043,0.016-0.061,0.066-0.041,0.107c0.36,0.698,0.772,1.363,1.225,1.993c0.019,0.027,0.053,0.038,0.084,0.029   c1.961-0.607,3.95-1.522,6.002-3.029c0.018-0.013,0.029-0.033,0.031-0.055c0.5-5.177-0.838-9.674-3.548-13.66   C20.342,4.385,20.33,4.375,20.317,4.37z M8.02,15.331c-1.183,0-2.157-1.086-2.157-2.419s0.955-2.419,2.157-2.419   c1.211,0,2.176,1.095,2.157,2.419C10.177,14.246,9.221,15.331,8.02,15.331z M15.995,15.331c-1.182,0-2.157-1.086-2.157-2.419   s0.955-2.419,2.157-2.419c1.211,0,2.176,1.095,2.157,2.419C18.152,14.246,17.206,15.331,15.995,15.331z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a
+            href="https://www.deviantart.com/meetnp1706"
+            title="DeviantArt"
+            target="_blank"
+          >
+            <img
+              src="resources/dart.png"
+              alt="DeviantArt"
+              style="filter: invert(100%); margin-bottom: -12.5px"
+            />
+          </a>
+          <a
+            href="https://dribbble.com/ForLoopDR"
+            title="Dribbble"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <g xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    style="fill-rule: evenodd; clip-rule: evenodd"
+                    d="M12,0C5.375,0,0,5.375,0,12s5.375,12,12,12c6.612,0,12-5.375,12-12   S18.612,0,12,0z M19.926,5.531c1.432,1.744,2.291,3.97,2.317,6.378c-0.338-0.065-3.722-0.755-7.133-0.326   c-0.078-0.169-0.143-0.351-0.221-0.533c-0.208-0.495-0.443-1.002-0.677-1.484C17.987,8.03,19.705,5.818,19.926,5.531z    M13.418,8.043c-1.679-3.084-3.54-5.61-3.826-6C10.36,1.861,11.167,1.77,12,1.77c2.603,0,4.985,0.976,6.794,2.577   C18.612,4.607,17.063,6.677,13.418,8.043z M7.64,2.733c0.273,0.364,2.095,2.902,3.8,5.922c-4.79,1.275-9.02,1.25-9.475,1.25   C2.629,6.729,4.777,4.087,7.64,2.733z M1.744,11.7c0.442,0.013,5.414,0.078,10.529-1.457c0.3,0.572,0.573,1.158,0.833,1.744   c-0.13,0.039-0.273,0.078-0.404,0.117c-5.284,1.705-8.095,6.365-8.33,6.755c-1.627-1.809-2.629-4.217-2.629-6.846V11.7z    M13.757,13.692c0.026-0.013,0.039-0.013,0.065-0.026c1.445,3.735,2.031,6.872,2.187,7.77c-1.237,0.534-2.59,0.82-4.009,0.82   c-2.369,0-4.555-0.807-6.286-2.16C5.896,19.718,7.978,15.709,13.757,13.692z M17.714,20.499c-0.104-0.625-0.651-3.618-1.991-7.302   c3.215-0.507,6.026,0.326,6.377,0.443C21.657,16.49,20.018,18.95,17.714,20.499z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCvzOZ7bQm1Gj4RdspWyaKBw"
+            title="YouTube"
+            target="_blank"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <g xmlns="http://www.w3.org/2000/svg" id="XMLID_184_">
+                  <path
+                    d="M23.498,6.186c-0.276-1.039-1.089-1.858-2.122-2.136C19.505,3.546,12,3.546,12,3.546s-7.505,0-9.377,0.504   C1.591,4.328,0.778,5.146,0.502,6.186C0,8.07,0,12,0,12s0,3.93,0.502,5.814c0.276,1.039,1.089,1.858,2.122,2.136   C4.495,20.454,12,20.454,12,20.454s7.505,0,9.377-0.504c1.032-0.278,1.845-1.096,2.122-2.136C24,15.93,24,12,24,12   S24,8.07,23.498,6.186z M9.546,15.569V8.431L15.818,12L9.546,15.569z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a
+            href="https://www.buymeacoffee.com/ForLoopCoffee"
+            title="Buymeacoffee"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M24,5a3,3,0,0,0-2.3-2.91A3.5,3.5,0,0,0,18.5,0H5.5A3.5,3.5,0,0,0,2.3,2.09a3,3,0,0,0-.208,5.755L3.539,19.4A5.257,5.257,0,0,0,8.748,24h6.5a5.257,5.257,0,0,0,5.209-4.6L21.906,7.845A2.994,2.994,0,0,0,24,5Zm-5.762,8H14.816c-.9-3.959-4.733-3.957-5.632,0H5.762L5.137,8H18.863ZM5.5,3h13a.5.5,0,0,1,.5.5V5H5V3.5A.5.5,0,0,1,5.5,3Zm9.752,18h-6.5a2.255,2.255,0,0,1-2.233-1.972L6.137,16H9.184c.9,3.959,4.733,3.957,5.632,0h3.047l-.379,3.029A2.253,2.253,0,0,1,15.252,21Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g></svg
+          ></a>
+        </div>
+      </div>
+    </div>
+    <script>
+      function rfocus() {
+        document.querySelector(".card-shadow").classList.add("card-shadow-ch");
+        document.querySelector(".card-holder").classList.add("card-holder-ch");
+        document
+          .querySelector(".card-holder.back")
+          .classList.add("card-holder-ch");
+        document.querySelector(".anim-theme").classList.add("anim-theme-ch");
+        document.querySelector(".hidden-text").classList.add("hidden-text-ch");
+      }
+      function rblur() {
+        document
+          .querySelector(".card-shadow")
+          .classList.remove("card-shadow-ch");
+        document
+          .querySelector(".card-holder.back")
+          .classList.remove("card-holder-ch");
+        document
+          .querySelector(".card-holder")
+          .classList.remove("card-holder-ch");
+        document.querySelector(".anim-theme").classList.remove("anim-theme-ch");
+        document
+          .querySelector(".hidden-text")
+          .classList.remove("hidden-text-ch");
+      }
+    </script>
   </body>
 </html>
